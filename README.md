@@ -36,3 +36,8 @@ I wanted to design my site before working on the backend part.
 So you will notice some libraries related to development for these purposes. Cors
 is a library that allows me to test my sites form submission without it being on the
 same localhost port. So I could have it served via webpack instead of through express.
+
+
+# [Contact me](https://www.making.codes/#contact-me)
+I am available for hire. You can quickly get in contact with me here:
+[making.codes/#contact-me](https://www.making.codes/#contact-me)
