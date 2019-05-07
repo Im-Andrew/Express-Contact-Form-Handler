@@ -1,0 +1,78 @@
+<!DOCTYPE html5>
+<html >
+<head>
+  <title>Form validation example</title>
+</head>
+
+<body>
+    <section id="contact-me">
+        <div>
+            <h2>Get In Touch</h2>
+            <p>
+                Please feel free to get in touch. I'm always
+                happy to answer any questions or respond to
+                interview requests. I'm actively looking
+                for employment right now, so all messages
+                are answered within <strong>24 hours</strong>.
+            </p>
+            <form id="contact" action="/serve/response" method="post">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="contact_name" placeholder="First Last" required />
+                </div>
+    
+                <div>
+                    <label for="mail">Email</label>
+                    <input type="email" id="mail" name="contact_email" placeholder="email@business.com" required />
+                </div>
+    
+                <div>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="contact_message" placeholder="I wanted to get in touch because..." required></textarea>
+                </div>
+
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+    // Taken from Mozilla
+    window.addEventListener("load", function () {
+        function sendData() {
+            var XHR = new XMLHttpRequest();
+
+            // Bind the FormData object and the form element
+            var FD = new FormData(form);
+
+            // Define what happens on successful data submission
+            XHR.addEventListener("load", function (event) {
+                alert(event.target.responseText);
+            });
+
+            // Define what happens in case of error
+            XHR.addEventListener("error", function (event) {
+                alert('Oops! Something went wrong.');
+            });
+
+            // Set up our request
+            XHR.open("POST", "/serve/response/");
+
+            // The data sent is what the user provided in the form
+            XHR.send(FD);
+        }
+
+        // Access the form element...
+        var form = document.getElementById("contact");
+
+        // ...and take over its submit event.
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            sendData();
+        });
+    });
+
+    </script>
+</body>
+</html>
